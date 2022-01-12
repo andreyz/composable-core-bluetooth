@@ -178,7 +178,7 @@ extension Peripheral.Environment {
                     peripheral.identifier,
                     .service(
                         service.uuid,
-                        .didDiscoverCharacteristics(convertToResult(service.characteristics?.map(Characteristic.init) ?? [], error: error))
+                        .didDiscoverCharacteristics(convertToResult(service.characteristics?.compactMap(Characteristic.init) ?? [], error: error))
                     )
                 )
             )
@@ -190,7 +190,7 @@ extension Peripheral.Environment {
                     peripheral.identifier,
                     .characteristic(
                         characteristic.uuid,
-                        .didDiscoverDescriptors(convertToResult(characteristic.descriptors?.map(Descriptor.init) ?? [], error: error))
+                        .didDiscoverDescriptors(convertToResult(characteristic.descriptors?.compactMap(Descriptor.init) ?? [], error: error))
                     )
                 )
             )

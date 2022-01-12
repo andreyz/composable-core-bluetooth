@@ -21,7 +21,7 @@ public struct Service {
         rawValue = service
         identifier = service.uuid
         isPrimary = service.isPrimary
-        characteristics = { service.characteristics?.map(Characteristic.init) ?? [] }
+        characteristics = { service.characteristics?.compactMap(Characteristic.init) ?? [] }
         includedServices = service.includedServices?.map(Service.init) ?? []
     }
     
